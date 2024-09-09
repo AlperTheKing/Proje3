@@ -14,7 +14,7 @@ Bu proje, PyQt6 ile geliştirilmiş iki sekmeli bir masaüstü uygulamasıdır. 
 ### Giriş Bilgileri
 
 - **Kullanıcı Adı**: `Alper`
-- **Şifre**: `5276`
+- **Şifre**: `1234`
 
 ### Ekran Görüntüleri
 
