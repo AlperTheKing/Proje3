@@ -104,7 +104,11 @@ python <dosya_adı>.py
 
 ## Geliştirici Notları
 - Kullanıcı adı ve şifreyi giriş ekranında değiştirebilirsiniz.
+<<<<<<< HEAD
 - PyQt6 ile tasarlanan bu uygulama, çok sayıda işlevselliği destekler ve genişletilebilir yapıda geliştirilmiştir.
 ```
 
 Bu şekilde resimler %25 boyutuna küçültülmüş olacak.
+=======
+- PyQt6 ile tasarlanan bu uygulama, çok sayıda işlevselliği destekler ve genişletilebilir yapıda geliştirilmiştir.
+>>>>>>> de7121b (last)
