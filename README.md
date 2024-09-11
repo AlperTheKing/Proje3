@@ -1,6 +1,3 @@
-İşte **readme.md** dosyasında resimlerin dörtte bir oranında küçültülmüş hali:
-
-```markdown
 # Matematik İşlemleri ve Telefon Rehberi Uygulaması
 
 ## Proje Açıklaması
