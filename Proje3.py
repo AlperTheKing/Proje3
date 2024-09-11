@@ -603,6 +603,35 @@ class MyApp(QMainWindow):
         layout.addWidget(self.contacts_table)
         tab.setLayout(layout)
 
+    # Kişi arama işlemi
+    def init_search_contact_tab(self, tab):
+        layout = QFormLayout()
+        self.contact_search_input = QLineEdit()
+        self.search_contact_result = QLabel("Sonuç: ")
+
+        search_button = QPushButton("Ara")
+        search_button.clicked.connect(self.search_contact)
+
+        layout.addRow("Aramak istediğiniz kişinin ismi:", self.contact_search_input)
+        layout.addRow(search_button)
+        layout.addRow(self.search_contact_result)
+        tab.setLayout(layout)
+
+    def search_contact(self):
+        name = self.contact_search_input.text()
+        if name:
+            # Büyük küçük harf duyarlılığını kaldırıyoruz ve ismi arıyoruz
+            found = False
+            for stored_name, phone in self.contacts.items():
+                if stored_name.lower() == name.lower():
+                    self.search_contact_result.setText(f"Kişi Bulundu: {stored_name}, Telefon: {phone}")
+                    found = True
+                    break
+            if not found:
+                self.search_contact_result.setText(f"{name} rehberde bulunamadı.")
+        else:
+            QMessageBox.warning(self, "Hata", "Lütfen bir isim girin.")
+
     # Kişi düzenleme işlemi
     def init_edit_contact_tab(self, tab):
         layout = QFormLayout()

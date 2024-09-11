@@ -1,3 +1,6 @@
+İşte **readme.md** dosyasında resimlerin dörtte bir oranında küçültülmüş hali:
+
+```markdown
 # Matematik İşlemleri ve Telefon Rehberi Uygulaması
 
 ## Proje Açıklaması
@@ -40,7 +43,7 @@ python <dosya_adı>.py
 - Kullanıcı adı: `Alper`
 - Şifre: `1234`
 
-![Giriş Ekranı](Giris.png)
+<img src="Giris.png" alt="Giriş Ekranı" width="25%" height="25%">
 
 ### Matematik İşlemleri:
 - "Matematik Denklem Çözümleri" sekmesine tıklayın.
@@ -48,14 +51,14 @@ python <dosya_adı>.py
 - İşlem seçildikten sonra gerekli girişleri yapın ve "Çöz" ya da "Hesapla" butonuna tıklayın.
 - Girilen formül ve sonuç ekranda gösterilecektir.
 
-![Matematik İşlemleri](Matematik.png)
+<img src="Matematik.png" alt="Matematik İşlemleri" width="25%" height="25%">
 
 ### Telefon Rehberi:
 - "Telefon Rehberi" sekmesine tıklayın.
 - Kişi ekleme, kişi listeleme, kişi arama, kişi düzenleme ve kişi silme seçenekleri mevcuttur.
 - Rehberdeki kişileri yönetmek için ilgili işlemi seçip formu doldurun.
 
-![Telefon Rehberi](Telefon.png)
+<img src="Telefon.png" alt="Telefon Rehberi" width="25%" height="25%">
 
 ---
 
@@ -90,18 +93,21 @@ python <dosya_adı>.py
 
 ### 1. Giriş Ekranı:
 
-![Giriş Ekranı](Giris.png)
+<img src="Giris.png" alt="Giriş Ekranı" width="25%" height="25%">
 
 ### 2. Matematik İşlemleri Sekmesi:
 
-![Matematik İşlemleri](Matematik.png)
+<img src="Matematik.png" alt="Matematik İşlemleri" width="25%" height="25%">
 
 ### 3. Telefon Rehberi Sekmesi:
 
-![Telefon Rehberi](Telefon.png)
+<img src="Telefon.png" alt="Telefon Rehberi" width="25%" height="25%">
 
 ---
 
 ## Geliştirici Notları
 - Kullanıcı adı ve şifreyi giriş ekranında değiştirebilirsiniz.
 - PyQt6 ile tasarlanan bu uygulama, çok sayıda işlevselliği destekler ve genişletilebilir yapıda geliştirilmiştir.
+```
+
+Bu şekilde resimler %25 boyutuna küçültülmüş olacak.
