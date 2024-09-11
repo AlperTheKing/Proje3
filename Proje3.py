@@ -13,7 +13,7 @@ def veritabanina_baglan():
         conn = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="1234",
+            password="1234",  # Veritabanı şifrenizi buraya girin
             database="telefon_rehberi"
         )
         cursor = conn.cursor()
@@ -78,7 +78,7 @@ class MyApp(QMainWindow):
 
         self.math_tab.setLayout(layout)
 
-    # Her bir matematik işlemi için sekme fonksiyonları
+    # Matematik İşlemleri fonksiyonları
     def show_linear_solver(self):
         self.open_math_solver_tab("Birinci Dereceden Denklem Çöz", self.init_linear_tab)
 
@@ -128,7 +128,7 @@ class MyApp(QMainWindow):
         init_function(new_tab)
         self.tabs.setCurrentWidget(new_tab)
 
-    # Örnek olarak birinci dereceden denklem sekmesi başlatma fonksiyonu
+    # Birinci Dereceden Denklem Çözümü
     def init_linear_tab(self, tab):
         layout = QFormLayout()
         self.linear_a_input = QLineEdit()
