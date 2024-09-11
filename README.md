@@ -40,7 +40,7 @@ python <dosya_adı>.py
 - Kullanıcı adı: `Alper`
 - Şifre: `1234`
 
-![Giriş Ekranı](https://user-images.githubusercontent.com/123456789/placeholder-login.png)
+![Giriş Ekranı](Giris.png)
 
 ### Matematik İşlemleri:
 - "Matematik Denklem Çözümleri" sekmesine tıklayın.
@@ -48,14 +48,14 @@ python <dosya_adı>.py
 - İşlem seçildikten sonra gerekli girişleri yapın ve "Çöz" ya da "Hesapla" butonuna tıklayın.
 - Girilen formül ve sonuç ekranda gösterilecektir.
 
-![Matematik İşlemleri](https://user-images.githubusercontent.com/123456789/placeholder-math.png)
+![Matematik İşlemleri](Matematik.png)
 
 ### Telefon Rehberi:
 - "Telefon Rehberi" sekmesine tıklayın.
 - Kişi ekleme, kişi listeleme, kişi arama, kişi düzenleme ve kişi silme seçenekleri mevcuttur.
 - Rehberdeki kişileri yönetmek için ilgili işlemi seçip formu doldurun.
 
-![Telefon Rehberi](https://user-images.githubusercontent.com/123456789/placeholder-contacts.png)
+![Telefon Rehberi](Telefon.png)
 
 ---
 
@@ -90,15 +90,15 @@ python <dosya_adı>.py
 
 ### 1. Giriş Ekranı:
 
-![Giriş Ekranı](https://user-images.githubusercontent.com/123456789/placeholder-login.png)
+![Giriş Ekranı](Giris.png)
 
 ### 2. Matematik İşlemleri Sekmesi:
 
-![Matematik İşlemleri](https://user-images.githubusercontent.com/123456789/placeholder-math.png)
+![Matematik İşlemleri](Matematik.png)
 
 ### 3. Telefon Rehberi Sekmesi:
 
-![Telefon Rehberi](https://user-images.githubusercontent.com/123456789/placeholder-contacts.png)
+![Telefon Rehberi](Telefon.png)
 
 ---
 
