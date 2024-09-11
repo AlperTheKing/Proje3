@@ -14,6 +14,7 @@ Uygulama, kullanıcıya çeşitli matematiksel işlemleri yapma olanağı sunar 
 - **PyQt6** modülü
 - **SymPy** modülü
 - **Math** modülü (Python'un standart modüllerinden biri)
+- **MySQL** veritabanı
 
 ---
 
@@ -21,10 +22,15 @@ Uygulama, kullanıcıya çeşitli matematiksel işlemleri yapma olanağı sunar 
 
 1. **Python**'u sisteminize kurun. [Python İndir](https://www.python.org/downloads/)
    
-2. **PyQt6** ve **SymPy** modüllerini yüklemek için terminalde şu komutları çalıştırın:
+2. **PyQt6**, **SymPy**, ve **mysql-connector-python** modüllerini yüklemek için terminalde şu komutları çalıştırın:
    ```bash
-   pip install pyqt6 sympy
+   pip install pyqt6 sympy mysql-connector-python
    ```
+
+3. MySQL veritabanınızı ayarlayın ve aşağıdaki kimlik bilgileriyle uygulamaya bağlanın:
+   - Kullanıcı adı: `root`
+   - Şifre: `1234`
+   - Veritabanı: `telefon_rehberi`
 
 ---
 
@@ -40,7 +46,7 @@ python <dosya_adı>.py
 - Kullanıcı adı: `Alper`
 - Şifre: `1234`
 
-<img src="Giris.png" alt="Giriş Ekranı" width="25%" height="25%">
+<img src="Giris.png" alt="Giriş Ekranı" width="50%">
 
 ### Matematik İşlemleri:
 - "Matematik Denklem Çözümleri" sekmesine tıklayın.
@@ -48,14 +54,14 @@ python <dosya_adı>.py
 - İşlem seçildikten sonra gerekli girişleri yapın ve "Çöz" ya da "Hesapla" butonuna tıklayın.
 - Girilen formül ve sonuç ekranda gösterilecektir.
 
-<img src="Matematik.png" alt="Matematik İşlemleri" width="25%" height="25%">
+<img src="Matematik.png" alt="Matematik İşlemleri" width="50%">
 
 ### Telefon Rehberi:
 - "Telefon Rehberi" sekmesine tıklayın.
 - Kişi ekleme, kişi listeleme, kişi arama, kişi düzenleme ve kişi silme seçenekleri mevcuttur.
 - Rehberdeki kişileri yönetmek için ilgili işlemi seçip formu doldurun.
 
-<img src="Telefon.png" alt="Telefon Rehberi" width="25%" height="25%">
+<img src="Telefon.png" alt="Telefon Rehberi" width="50%">
 
 ---
 
@@ -83,25 +89,3 @@ python <dosya_adı>.py
 - **Kişi Ara**: Girilen isme göre rehberde kişi arar.
 - **Kişiyi Düzelt**: Var olan bir kişinin telefon numarasını günceller.
 - **Kişiyi Sil**: Rehberden bir kişiyi siler.
-
----
-
-## Ekran Görüntüleri
-
-### 1. Giriş Ekranı:
-
-<img src="Giris.png" alt="Giriş Ekranı" width="25%" height="25%">
-
-### 2. Matematik İşlemleri Sekmesi:
-
-<img src="Matematik.png" alt="Matematik İşlemleri" width="25%" height="25%">
-
-### 3. Telefon Rehberi Sekmesi:
-
-<img src="Telefon.png" alt="Telefon Rehberi" width="25%" height="25%">
-
----
-
-## Geliştirici Notları
-- Kullanıcı adı ve şifreyi giriş ekranında değiştirebilirsiniz.
-- PyQt6 ile tasarlanan bu uygulama, çok sayıda işlevselliği destekler ve genişletilebilir yapıda geliştirilmiştir.

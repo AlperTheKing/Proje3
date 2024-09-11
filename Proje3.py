@@ -1,10 +1,28 @@
 import sys
+import mysql.connector
 from PyQt6.QtWidgets import (
     QApplication, QMainWindow, QTabWidget, QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox, QFormLayout, QTableWidget, QTableWidgetItem
 )
 from PyQt6.QtCore import Qt
 from sympy import Symbol, solve, sqrt
 from math import factorial, log, gcd, exp, sin, cos, tan, radians
+
+# Veritabanı Bağlantısı
+def veritabanina_baglan():
+    try:
+        conn = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="1234",
+            database="telefon_rehberi"
+        )
+        cursor = conn.cursor()
+        cursor.execute(
+            "CREATE TABLE IF NOT EXISTS rehber (isim VARCHAR(255), telefon VARCHAR(255))")
+        return conn, cursor
+    except mysql.connector.Error as err:
+        QMessageBox.critical(None, "Veritabanı Hatası", f"Bağlantı hatası: {err}")
+        sys.exit()
 
 # Ana Uygulama Penceresi
 class MyApp(QMainWindow):
@@ -544,8 +562,8 @@ class MyApp(QMainWindow):
 
         self.rehber_tab.setLayout(layout)
 
-        # Rehber verileri
-        self.contacts = {}  # Verileri burada tutalım
+        # Veritabanı bağlantısı
+        self.conn, self.cursor = veritabanina_baglan()
 
     # Telefon Rehberi için her işlem fonksiyonları
     def show_add_contact(self):
@@ -583,7 +601,9 @@ class MyApp(QMainWindow):
         name = self.contact_name_input.text()
         phone = self.contact_phone_input.text()
         if name and phone:
-            self.contacts[name] = phone  # Verileri sözlüğe ekle
+            self.cursor.execute(
+                "INSERT INTO rehber (isim, telefon) VALUES (%s, %s)", (name, phone))
+            self.conn.commit()
             self.add_contact_result.setText(f"Kişi Eklendi: {name}, {phone}")
         else:
             QMessageBox.warning(self, "Hata", "Lütfen tüm alanları doldurun.")
@@ -594,9 +614,12 @@ class MyApp(QMainWindow):
         self.contacts_table = QTableWidget()
         self.contacts_table.setColumnCount(2)
         self.contacts_table.setHorizontalHeaderLabels(["İsim", "Telefon"])
-        self.contacts_table.setRowCount(len(self.contacts))
 
-        for row, (name, phone) in enumerate(self.contacts.items()):
+        self.cursor.execute("SELECT isim, telefon FROM rehber")
+        contacts = self.cursor.fetchall()
+        self.contacts_table.setRowCount(len(contacts))
+
+        for row, (name, phone) in enumerate(contacts):
             self.contacts_table.setItem(row, 0, QTableWidgetItem(name))
             self.contacts_table.setItem(row, 1, QTableWidgetItem(phone))
 
@@ -618,16 +641,14 @@ class MyApp(QMainWindow):
         tab.setLayout(layout)
 
     def search_contact(self):
-        name = self.contact_search_input.text()
+        name = self.contact_search_input.text().lower()
         if name:
-            # Büyük küçük harf duyarlılığını kaldırıyoruz ve ismi arıyoruz
-            found = False
-            for stored_name, phone in self.contacts.items():
-                if stored_name.lower() == name.lower():
-                    self.search_contact_result.setText(f"Kişi Bulundu: {stored_name}, Telefon: {phone}")
-                    found = True
-                    break
-            if not found:
+            self.cursor.execute(
+                "SELECT isim, telefon FROM rehber WHERE LOWER(isim) = %s", (name,))
+            result = self.cursor.fetchone()
+            if result:
+                self.search_contact_result.setText(f"Kişi Bulundu: {result[0]}, Telefon: {result[1]}")
+            else:
                 self.search_contact_result.setText(f"{name} rehberde bulunamadı.")
         else:
             QMessageBox.warning(self, "Hata", "Lütfen bir isim girin.")
@@ -649,10 +670,12 @@ class MyApp(QMainWindow):
         tab.setLayout(layout)
 
     def edit_contact(self):
-        name = self.contact_search_input.text()
+        name = self.contact_search_input.text().lower()
         new_phone = self.new_phone_input.text()
-        if name in self.contacts and new_phone:
-            self.contacts[name] = new_phone  # Telefon numarasını güncelle
+        if name and new_phone:
+            self.cursor.execute(
+                "UPDATE rehber SET telefon = %s WHERE LOWER(isim) = %s", (new_phone, name))
+            self.conn.commit()
             self.edit_contact_result.setText(f"{name} kişisinin yeni telefon numarası: {new_phone}")
         else:
             QMessageBox.warning(self, "Hata", "Kişi bulunamadı veya geçersiz telefon numarası.")
@@ -672,9 +695,10 @@ class MyApp(QMainWindow):
         tab.setLayout(layout)
 
     def delete_contact(self):
-        name = self.contact_delete_input.text()
-        if name in self.contacts:
-            del self.contacts[name]  # Kişiyi sil
+        name = self.contact_delete_input.text().lower()
+        if name:
+            self.cursor.execute("DELETE FROM rehber WHERE LOWER(isim) = %s", (name,))
+            self.conn.commit()
             self.delete_contact_result.setText(f"{name} rehberden silindi.")
         else:
             QMessageBox.warning(self, "Hata", "Kişi bulunamadı.")
